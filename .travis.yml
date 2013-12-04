@@ -15,4 +15,4 @@ script: php -d apc.enable_cli=1 $(phpenv which phpunit)
 
 after_script:
     - composer require satooshi/php-coveralls=dev-master --dev -n --prefer-source
-    - bin/coveralls -v -c .coveralls.yml
+    - bin/coveralls -v -c ../.coveralls.yml
