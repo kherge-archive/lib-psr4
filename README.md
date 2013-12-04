@@ -1,5 +1,5 @@
-Observer
-========
+PSR-4
+=====
 
 [![Build Status][]](https://travis-ci.org/phine/lib-psr4)
 [![Coverage Status][]](https://coveralls.io/r/phine/lib-psr4)
