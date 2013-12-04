@@ -15,5 +15,5 @@ before_script:
 script: phpunit -d apc.enable_cli=1
 
 after_script:
-    - composer require satooshi/php-coveralls=* --dev -n --prefer-source
+    - composer require satooshi/php-coveralls=dev-master --dev -n --prefer-source
     - bin/coveralls -v
