@@ -97,6 +97,12 @@ class ApcLoaderTest extends TestCase
      */
     protected function setUp()
     {
+        if (!function_exists('apc_fetch')) {
+            $this->markTestSkipped(
+                'The APC(u) extension is required.'
+            );
+        }
+
         $this->path = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
         $this->prefix = 'test-' . rand() . '-';
         $this->loader = new ApcLoader($this->prefix);
