@@ -8,6 +8,7 @@ php:
 before_script:
     - composer self-update
     - composer install --dev -n --prefer-source
+    - echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script: phpunit -d apc.enable_cli=1
 
