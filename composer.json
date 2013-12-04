@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Phine\\Psr4": "src/lib"
+            "Phine\\PSR4": "src/lib"
         }
     },
     "config": {

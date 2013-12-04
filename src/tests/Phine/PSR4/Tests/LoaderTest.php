@@ -2,13 +2,13 @@
 
 namespace Phine\Psr\Tests;
 
-use Phine\Psr4\Loader;
+use Phine\PSR4\Loader;
 use Phine\Test\Method;
 use Phine\Test\Property;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
- * Tests the methods in the `Psr4` class.
+ * Tests the methods in the `PSR4` class.
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */
@@ -56,14 +56,14 @@ class LoaderTest extends TestCase
             'map',
             array(
                 'Bad\\Example' => array(__DIR__ .  DIRECTORY_SEPARATOR),
-                'Phine\\Psr4' => array($this->path)
+                'Phine\\PSR4' => array($this->path)
             )
         );
 
-        $this->loader->load('Phine\\Psr4\\Example\\Example');
+        $this->loader->load('Phine\\PSR4\\Example\\Example');
 
         $this->assertTrue(
-            class_exists('Phine\\Psr4\\Example\\Example'),
+            class_exists('Phine\\PSR4\\Example\\Example'),
             'The example class should have been loaded.'
         );
     }
@@ -103,14 +103,14 @@ class LoaderTest extends TestCase
             $this->loader,
             'map',
             array(
-                'Phine\\Psr4' => array($this->path)
+                'Phine\\PSR4' => array($this->path)
             )
         );
 
         $this->loader->register();
 
         $this->assertTrue(
-            class_exists('Phine\\Psr4\\Example\\Another'),
+            class_exists('Phine\\PSR4\\Example\\Another'),
             'The autoloader should have been registered.'
         );
 
@@ -130,7 +130,7 @@ class LoaderTest extends TestCase
             $this->loader,
             'map',
             array(
-                'Phine\\Psr4' => array($this->path)
+                'Phine\\PSR4' => array($this->path)
             )
         );
 
@@ -138,7 +138,7 @@ class LoaderTest extends TestCase
         $this->loader->unregister();
 
         $this->assertFalse(
-            class_exists('Phine\\Psr4\\Example\\Never'),
+            class_exists('Phine\\PSR4\\Example\\Never'),
             'The autoloader should have been unregistered.'
         );
     }
@@ -153,14 +153,14 @@ class LoaderTest extends TestCase
             $this->loader,
             'map',
             array(
-                'Phine\\Psr4' => array(
+                'Phine\\PSR4' => array(
                     '/does/not/exist',
                     $this->path
                 )
             )
         );
 
-        $class = 'Phine\\Psr4\\Example\\Example';
+        $class = 'Phine\\PSR4\\Example\\Example';
 
         $this->assertEquals(
             sprintf(
@@ -183,7 +183,7 @@ class LoaderTest extends TestCase
      */
     protected function setUp()
     {
-        $this->path = realpath(__DIR__ . '/../..') . DIRECTORY_SEPARATOR;
+        $this->path = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
         $this->loader = new Loader();
     }
 }

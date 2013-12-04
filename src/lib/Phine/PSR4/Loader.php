@@ -1,9 +1,31 @@
 <?php
 
-namespace Phine\Psr4;
+namespace Phine\PSR4;
 
 /**
  * Implements the PSR-4 standard for autoloading classes from files.
+ *
+ * The `Loader` class provides a basic implementation of the PSR-4 standard.
+ * The standard defines how namespaced classes are to be loaded. This loader
+ * will accept one or more directory paths for every namespace prefix that is
+ * used.
+ *
+ *     use Phine\PSR4\Loader;
+ *
+ *     // create a new loader
+ *     $loader = new Loader();
+ *
+ *     // map a directory path to a prefix
+ *     $loader->map('Phine\\PSR4', '/path/to/src/lib/Phine/PSR4');
+ *
+ *     // register the loader
+ *     $loader->register();
+ *
+ * It might be useful to know that you can register more than one instance of
+ * the loader. The order in which the autoloaders are used is the same order
+ * in which they have been registered (first in, first out).
+ *
+ * @link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md PSR-4
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */
@@ -21,9 +43,9 @@ class Loader
      *
      * You may provide an array of namespace prefix to base directory paths:
      *
-     *     use Phine\Psr\Psr4;
+     *     use Phine\PSR4\Loader;
      *
-     *     $psr4 = new Psr4(
+     *     $loader = new Loader(
      *         array(
      *             'One\\Prefix' => '/one/path/to/dir',
      *             'Another\\Prefix' => array(
@@ -55,15 +77,15 @@ class Loader
     }
 
     /**
-     * Maps a namespace prefix to a base directory path.
+     * Maps a namespace prefix to one or more base directory paths.
      *
      * This method is used to map a single namespace to one or more directory
      * paths. The `$paths` argument may be a single directory path (string),
      * or an array of directory paths.
      *
-     *     $psr4->map('Example\\Prefix', '/single/dir/path');
+     *     $loader->map('Example\\Prefix', '/single/dir/path');
      *
-     *     $psr4->map(
+     *     $loader->map(
      *         'Example\\Prefix',
      *         array(
      *             '/one/directory/path',

@@ -1,9 +1,21 @@
 <?php
 
-namespace Phine\Psr4;
+namespace Phine\PSR4;
 
 /**
- * Implements the PSR-4 standard with support for APC caching.
+ * Implements the PSR-4 standard with APC caching.
+ *
+ * The `ApcLoader` class is an extension of the `Loader` class. It has been
+ * modified so that APC is used to cache paths found for specific class names.
+ * Note that if a path changes, APC will not be updated. You will need to use
+ * a versioning scheme for the cache key prefix, or flush the cache.
+ *
+ * Create a new loader is slightly different:
+ *
+ *     use Phine\PSR4\ApcLoader;
+ *
+ *     // create a new loader using a cache key prefix
+ *     $loader = new ApcLoader('cache-key-prefix');
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */

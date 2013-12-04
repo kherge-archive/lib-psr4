@@ -1,6 +1,6 @@
 <?php
 
-namespace Phine\Psr4\Example;
+namespace Phine\PSR4\Example;
 
 /**
  * Another example class that should never be autoloaded.

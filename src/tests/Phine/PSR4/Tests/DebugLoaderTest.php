@@ -2,7 +2,7 @@
 
 namespace Phine\Psr\Tests;
 
-use Phine\Psr4\DebugLoader;
+use Phine\PSR4\DebugLoader;
 use Phine\Test\Method;
 use PHPUnit_Framework_TestCase as TestCase;
 
@@ -32,7 +32,7 @@ class DebugLoaderTest extends TestCase
      */
     public function testLoad()
     {
-        $class = 'Phine\\Psr4\\Example\\DebugGood';
+        $class = 'Phine\\PSR4\\Example\\DebugGood';
 
         $this->loader->load($class);
 
@@ -60,7 +60,7 @@ class DebugLoaderTest extends TestCase
      */
     public function testLoadNoClass()
     {
-        $class = 'Phine\\Psr4\\Example\\Debug';
+        $class = 'Phine\\PSR4\\Example\\Debug';
         $file = Method::invoke($this->loader, 'getPath', $class);
 
         $this->setExpectedException(
@@ -76,9 +76,9 @@ class DebugLoaderTest extends TestCase
      */
     protected function setUp()
     {
-        $this->path = realpath(__DIR__ . '/../..') . DIRECTORY_SEPARATOR;
+        $this->path = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 
         $this->loader = new DebugLoader();
-        $this->loader->map('Phine\\Psr4', $this->path);
+        $this->loader->map('Phine\\PSR4', $this->path);
     }
 }

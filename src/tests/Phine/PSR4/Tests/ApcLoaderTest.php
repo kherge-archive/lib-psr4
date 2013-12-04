@@ -1,8 +1,8 @@
 <?php
 
-namespace Phine\Psr\Tests;
+namespace Phine\PSR4\Tests;
 
-use Phine\Psr4\ApcLoader;
+use Phine\PSR4\ApcLoader;
 use Phine\Test\Method;
 use Phine\Test\Property;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -52,7 +52,7 @@ class ApcLoaderTest extends TestCase
      */
     public function testGetPath()
     {
-        $class = 'Phine\\Psr4\\Example\\Example';
+        $class = 'Phine\\PSR4\\Example\\Example';
 
         apc_delete($this->prefix . $class);
 
@@ -67,7 +67,7 @@ class ApcLoaderTest extends TestCase
             $this->loader,
             'map',
             array(
-                'Phine\\Psr4' => array(
+                'Phine\\PSR4' => array(
                     '/does/not/exist',
                     $this->path
                 )
@@ -97,7 +97,7 @@ class ApcLoaderTest extends TestCase
      */
     protected function setUp()
     {
-        $this->path = realpath(__DIR__ . '/../..') . DIRECTORY_SEPARATOR;
+        $this->path = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
         $this->prefix = 'test-' . rand() . '-';
         $this->loader = new ApcLoader($this->prefix);
     }
