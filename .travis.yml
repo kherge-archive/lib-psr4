@@ -11,8 +11,4 @@ before_script:
     - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -le 4 ]; then echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
     - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -gt 4 ]; then printf "\n\n\n\n" | pecl install apcu-4.0.2; fi;'
 
-script: php -d apc.enable_cli=1 $(phpenv which phpunit)
-
-after_script:
-    - composer require satooshi/php-coveralls=dev-master --dev -n --prefer-source
-    - bin/coveralls -v -c ../.coveralls.yml
+script: php -d apc.enable_cli=1 $(phpunit) -c .travis-phpunit.xml
