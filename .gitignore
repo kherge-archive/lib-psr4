@@ -1,6 +1,8 @@
 /.idea/
+/bin/
 /src/vendors/
 
 /*.iml
 /composer.lock
+/coverage.json
 /coverage.xml
