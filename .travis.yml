@@ -9,11 +9,11 @@ before_script:
     - composer self-update
     - composer install --dev -n --prefer-source
     - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -le 4 ]; then echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
-    - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -gt 4 ]; then pecl install apcu; echo "extension = apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
+    - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -gt 4 ]; then pecl install apcu-4.0.2; echo "extension = apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
     - echo "apc.enable_cli = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script: phpunit -d apc.enable_cli=1
 
 after_script:
     - composer require satooshi/php-coveralls=* --dev -n --prefer-source
-    - $(pwd)/src/vendors/bin/coveralls -v --config $(pwd)/.coveralls.yml
+    - bin/coveralls -v
