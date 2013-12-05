@@ -8,49 +8,105 @@ PSR-4
 
 A simple implementation of the [PSR-4][] standard.
 
+Summary
+-------
+
+The PSR-4 library provides a simple implementation of the [PSR-4][] standard.
+Also bundled with the library are classes for debugging the class autoloading
+process, as well as caching for improved performance.
+
 Usage
 -----
 
-First you will need to create a new instance of the autoloader.
+You may want to start by using the standard loading class:
 
 ```php
-// for development
-$psr4 = new Phine\Psr4\Loader();
+use Phine\PSR4\Loader();
 
-// for production
-$psr4 = new Phine\Psr4\ApcLoader('key-prefix');
-
-// for testing/development
-$psr4 = new Phine\Psr4\DebugLoader();
+$loader = new Loader();
 ```
 
-You can then register the necessary mapping paths.
+With a new loader available, you will then want to map your namespace prefixes
+to their base directory paths.
 
 ```php
-// one path at a time
-$psr4->map('Example\\Namespace', '/path/to/dir');
-
-// multiple paths at a time
-$psr4->map(
-    'Example\\Namespace',
-    array(
-        '/path/to/dir',
-        '/path/to/dir',
-        '/path/to/dir',
-    )
-);
+$loader->map('Namespace\\Prefix', '/base/directory/path');
 ```
 
-> Note that multiple calls to `map()` for the same namespace will simply
-> append to the existing list of mapping paths.
+While you may only register one namespace prefix at a time, you may specify
+one or more directory paths for each call to `map()`. To pass more than one
+directory path, you may simply pass an array of directory paths.
 
-Finally, register the autoloader.
+You may also chain calls to `map()` together:
 
 ```php
-$psr4->register();
+$loader
+    ->map('One\\Prefix', '/one/path')
+    ->map('Two\\Prefix', '/two/path')
+    ->map('Three\\Prefix', '/three/path');
 ```
 
-> Note that you can register multiple autoloaders if necessary.
+When you are ready to use the loader, you will then need to register it:
+
+```php
+$loader->register();
+```
+
+> You may register the loader at any point, such as before you begin mapping
+> namespace prefixes to paths. Any namespace prefixes mapped after the loader
+> is registered will be used by the loader as well.
+
+You can now autoload classes for the namespace prefixes you registered:
+
+```php
+$myInstance = new One\Prefix\MyClass();
+```
+
+Debugging
+---------
+
+If you find that you are having problems autoloading classes, you may want to
+use the `DebugLoader` class. This class will throw an exception when either the
+file for the class could not be found, or if the class did not actually exist
+in the file that was loaded.
+
+Using the debugging loader is as simple as using the standard loader:
+
+```php
+use Phine\PSR4\DebugLoader;
+
+$loader = new DebugLoader();
+```
+
+Caching
+-------
+
+When you are ready to use your project in a production environment, you may
+want to use a version of the loader that supports caching. Currently, only
+APC is supported, but additional support can be bundled with enough demand.
+If you need to support a caching library, you will want to mimic the code
+used for the bundled caching classes.
+
+### APC
+
+You will need to create a new instance of `APCLoader` to use APC caching:
+
+```php
+use Phine\PSR4\APCLoader;
+
+$loader = new APCLoader($cacheKeyPrefix);
+```
+
+As part of the constructor, you need to specify a cache key prefix that will
+be used when storing class file paths in APC. The prefix can be whatever you
+need it to be.
+
+Using the prefix `PSR4-Classes-` and loading the class `My\Example` will
+generate the cache key `PSR4-Classes-My\Example` for the class's file path.
+
+> It may be useful to know that once a class file path is cached, it will not
+> expire or be refreshed if it no longer exists. You will need to flush the
+> cache or using a versioning scheme for the prefix.
 
 Requirement
 -----------
