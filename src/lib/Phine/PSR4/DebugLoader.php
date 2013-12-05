@@ -21,6 +21,8 @@ use RuntimeException;
  * load.
  *
  * @author Kevin Herrera <kevin@herrera.io>
+ *
+ * @api
  */
 class DebugLoader extends Loader
 {

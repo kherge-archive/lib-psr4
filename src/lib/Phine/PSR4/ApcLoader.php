@@ -18,6 +18,8 @@ namespace Phine\PSR4;
  *     $loader = new ApcLoader('cache-key-prefix');
  *
  * @author Kevin Herrera <kevin@herrera.io>
+ *
+ * @api
  */
 class ApcLoader extends Loader
 {
@@ -39,6 +41,8 @@ class ApcLoader extends Loader
      * Sets the cache key prefix.
      *
      * @param string $key The cache key prefix.
+     *
+     * @api
      */
     public function __construct($key)
     {

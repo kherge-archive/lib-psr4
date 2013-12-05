@@ -28,6 +28,8 @@ namespace Phine\PSR4;
  * @link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md PSR-4
  *
  * @author Kevin Herrera <kevin@herrera.io>
+ *
+ * @api
  */
 class Loader
 {
@@ -36,7 +38,7 @@ class Loader
      *
      * @var array
      */
-    protected $map = array();
+    private $map = array();
 
     /**
      * Sets the namespace prefixes and their base directory paths.
@@ -56,6 +58,8 @@ class Loader
      *     );
      *
      * @param array $map The namespace prefix to directory path map.
+     *
+     * @api
      */
     public function __construct(array $map = array())
     {
@@ -68,6 +72,8 @@ class Loader
      * Loads a class using one of the mapped namespace prefixes.
      *
      * @param string $class The name of the class.
+     *
+     * @api
      */
     public function load($class)
     {
@@ -101,6 +107,8 @@ class Loader
      * @param array|string $paths  The base directory path(s).
      *
      * @return Loader The instance of this class.
+     *
+     * @api
      */
     public function map($prefix, $paths)
     {
@@ -120,6 +128,8 @@ class Loader
 
     /**
      * Registers this instance with the SPL autoloading mechanism.
+     *
+     * @api
      */
     public function register()
     {
@@ -128,6 +138,8 @@ class Loader
 
     /**
      * Unregisters this instance with the SPL autoloading mechanism.
+     *
+     * @api
      */
     public function unregister()
     {
@@ -144,6 +156,8 @@ class Loader
      * @param string $class The name of the class.
      *
      * @return string The file path, if any.
+     *
+     * @api
      */
     protected function getPath($class)
     {
