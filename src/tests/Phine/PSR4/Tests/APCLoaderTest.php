@@ -2,17 +2,17 @@
 
 namespace Phine\PSR4\Tests;
 
-use Phine\PSR4\ApcLoader;
+use Phine\PSR4\APCLoader;
 use Phine\Test\Method;
 use Phine\Test\Property;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
- * Tests the methods in the `ApcLoader` class.
+ * Tests the methods in the `APCLoader` class.
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */
-class ApcLoaderTest extends TestCase
+class APCLoaderTest extends TestCase
 {
     /**
      * The path to example classes.
@@ -31,7 +31,7 @@ class ApcLoaderTest extends TestCase
     /**
      * The loader instance being tested.
      *
-     * @var ApcLoader
+     * @var APCLoader
      */
     private $loader;
 
@@ -105,6 +105,6 @@ class ApcLoaderTest extends TestCase
 
         $this->path = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
         $this->prefix = 'test-' . rand() . '-';
-        $this->loader = new ApcLoader($this->prefix);
+        $this->loader = new APCLoader($this->prefix);
     }
 }
