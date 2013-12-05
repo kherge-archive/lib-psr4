@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <files>
+    <directory>../lib-psr4/src/lib</directory>
+    <directory>../lib-psr4/src/vendors/phine</directory>
+    <ignore>*/test/*</ignore>
+    <ignore>*/tests/*</ignore>
+  </files>
+  <parser>
+    <target>docs/cache</target>
+  </parser>
+  <title>PSR-4 API</title>
+  <transformations>
+    <template name="clean"/>
+  </transformations>
+  <transformer>
+    <target>.</target>
+  </transformer>
+</phpdoc>
+
