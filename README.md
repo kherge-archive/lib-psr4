@@ -112,6 +112,8 @@ Requirement
 -----------
 
 - PHP >= 5.3.3
+- APC (if using `APCLoader` on PHP 5.4 and older)
+- APCu (if using `APCLoader` on PHP 5.5 and newer)
 
 Installation
 ------------

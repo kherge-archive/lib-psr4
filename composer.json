@@ -21,6 +21,10 @@
         "league/phpunit-coverage-listener": "~1.0",
         "phine/test": "~1.0"
     },
+    "suggest": {
+        "ext-apc": "For caching on PHP 5.4 or older.",
+        "ext-apcu": "For caching on PhP 5.5 or newer."
+    },
     "autoload": {
         "psr-0": {
             "Phine\\PSR4": "src/lib"
