@@ -7,8 +7,8 @@ namespace Phine\PSR4;
  *
  * The `ApcLoader` class is an extension of the `Loader` class. It has been
  * modified so that APC is used to cache paths found for specific class names.
- * Note that if a path changes, APC will not be updated. You will need to use
- * a versioning scheme for the cache key prefix, or flush the cache.
+ * Note that if a path changes, APC will not be updated. You will need to flush
+ * the cache use or use a versioning scheme for the cache key prefix.
  *
  * Create a new loader is slightly different:
  *
