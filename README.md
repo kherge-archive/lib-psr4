@@ -115,6 +115,11 @@ Requirement
 - APC (if using `APCLoader` on PHP 5.4 and older)
 - APCu (if using `APCLoader` on PHP 5.5 and newer)
 
+API Documentation
+-----------------
+
+You can find the [API documentation][] here.
+
 Installation
 ------------
 
@@ -132,4 +137,5 @@ This library is available under the [MIT license](LICENSE).
 [Latest Stable Version]: https://poser.pugx.org/phine/psr4/v/stable.png
 [Total Downloads]: https://poser.pugx.org/phine/psr4/downloads.png
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
+[API Documentat]: http://phine.github.io/lib-psr4/
 [Composer]: http://getcomposer.org/
