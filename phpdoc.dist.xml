@@ -7,7 +7,7 @@
     <ignore>*/tests/*</ignore>
   </files>
   <parser>
-    <target>docs/cache</target>
+    <target>cache</target>
   </parser>
   <title>PSR-4 API</title>
   <transformations>
