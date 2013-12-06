@@ -15,6 +15,20 @@ The PSR-4 library provides a simple implementation of the [PSR-4][] standard.
 Also bundled with the library are classes for debugging the class autoloading
 process, as well as caching for improved performance.
 
+Requirement
+-----------
+
+- PHP >= 5.3.3
+- APC (if using `APCLoader` on PHP 5.4 and older)
+- APCu (if using `APCLoader` on PHP 5.5 and newer)
+
+Installation
+------------
+
+Via [Composer][]:
+
+    $ composer require "phine/psr4=~1.0"
+
 Usage
 -----
 
@@ -108,24 +122,10 @@ generate the cache key `PSR4-Classes-My\Example` for the class's file path.
 > expire or be refreshed if it no longer exists. You will need to flush the
 > cache or using a versioning scheme for the prefix.
 
-Requirement
------------
-
-- PHP >= 5.3.3
-- APC (if using `APCLoader` on PHP 5.4 and older)
-- APCu (if using `APCLoader` on PHP 5.5 and newer)
-
 API Documentation
 -----------------
 
 You can find the [API documentation][] here.
-
-Installation
-------------
-
-Via [Composer][]:
-
-    $ composer require "phine/psr4=~1.0"
 
 License
 -------
